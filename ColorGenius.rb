@@ -24,9 +24,6 @@ class ColorGenius
 		mix.each do |key,value| 
 			if key.join(" and ").downcase == "#{color1.downcase} and #{color2.downcase}" || key.join(" and ").downcase == "#{color2.downcase} and #{color1.downcase}" 
 				p value
-			else 
-				p "Try two other colors! Be sure to use a primary/primary combination or primary/secondary combination."
-				break
 			end
 		end
 	end
@@ -46,9 +43,6 @@ class ColorGenius
 				p value
 			elsif value.downcase == color1.downcase
 				p key
-			else
-				p "Try another color! Make sure to include a hyphen with tertiary colors."
-				break
 			end
 		end
 	end
@@ -71,9 +65,6 @@ class ColorGenius
 		split.each do |key,value|  
 			if key.downcase == color1.downcase
 				p value.join(" and ") 
-			else
-				p "Try another color! Make sure to include a hyphen with tertiary colors."
-				break
 			end
 		end
 	end
@@ -96,9 +87,6 @@ class ColorGenius
 		analogous.each do |key,value| 
 			if key.downcase == color1.downcase
 				p value.join(" and ") 
-			else
-				p "Try another color! Make sure to include a hyphen with tertiary colors."
-				break
 			end
 		end
 	end
@@ -119,9 +107,6 @@ class ColorGenius
 		breakdown.each do |key,value|  
 			if key.downcase == color1.downcase
 				p value.join(" and ") 
-			else
-				p "Try another color! Make sure to include a hyphen with tertiary colors."
-				break
 			end
 		end
 	end
@@ -161,16 +146,13 @@ class ColorGenius
 		tetra.each do |key,value|
 			if key.downcase == color1.downcase
 				p value.join(" and ") 
-			else
-				p "Try another color! Make sure to include a hyphen with tertiary colors."
-				break
 			end
 		end
 	end
 end
 
 color = ColorGenius.new
-
+color.split_comp("red")
 
 
 
