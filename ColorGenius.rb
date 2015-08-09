@@ -21,7 +21,14 @@ class ColorGenius
 			["Blue","Purple"] => "Blue-Purple"
 		}
 		#If the two arguments are equal to one of the keys in any order, then it should return the value pair
-		mix.each {|key, value| p value if key.join(" and ").downcase == "#{color1.downcase} and #{color2.downcase}" || key.join(" and ").downcase == "#{color2.downcase} and #{color1.downcase}"}
+		mix.each do |key,value| 
+			if key.join(" and ").downcase == "#{color1.downcase} and #{color2.downcase}" || key.join(" and ").downcase == "#{color2.downcase} and #{color1.downcase}" 
+				p value
+			else 
+				p "Try two other colors! Be sure to use a primary/primary combination or primary/secondary combination."
+				break
+			end
+		end
 	end
 	#Returns a completary color of the primary colors
 	def comp(color1)
@@ -34,8 +41,16 @@ class ColorGenius
 			"Yellow-Green" => "Red-Purple"
 		}
 		#If the argument is equal to one of the keys, then it should return the value pair
-		complementary.each {|key,value| p value if key.downcase == color1.downcase}
-		complementary.each {|key,value| p key if value.downcase == color1.downcase}
+		complementary.each do |key,value| 
+			if key.downcase == color1.downcase
+				p value
+			elsif value.downcase == color1.downcase
+				p key
+			else
+				p "Try another color!"
+				break
+			end
+		end
 	end
 	#Returns split complementary colors for input
 	def split_comp(color1)
@@ -53,7 +68,14 @@ class ColorGenius
 			"Purple" => ["Yellow-Orange","Yellow-Green"],
 			"Red-Purple" => ["Green","Yellow"]
 		}
-		split.each {|key,value| p value.join(" and ") if key.downcase == color1.downcase}
+		split.each do |key,value|  
+			if key.downcase == color1.downcase
+				p value.join(" and ") 
+			else
+				p "Try another color!"
+				break
+			end
+		end
 	end
 	#Returns analogous colors to input
 	def analogous(color1)
@@ -71,7 +93,14 @@ class ColorGenius
 			"Purple" => ["Blue-Purple","Red-Purple"],
 			"Red-Purple" => ["Red","Purple"]
 		}
-		analogous.each {|key,value| p value.join(" and ") if key.downcase == color1.downcase}
+		analogous.each do |key,value| 
+			if key.downcase == color1.downcase
+				p value.join(" and ") 
+			else
+				p "Try another color!"
+				break
+			end
+		end
 	end
 	#Breaks down a secondary color into its primary colors
 	def breakdown(color1)
@@ -87,7 +116,14 @@ class ColorGenius
 			"Blue-Purple" => ["Blue","Purple"]
 		}
 		#If the argument is equal to one of the keys, then it should return the value pair
-		breakdown.each {|key,value|  p value.join(" and ") if key.downcase == color1.downcase}
+		breakdown.each do |key,value|  
+			if key.downcase == color1.downcase
+				p value.join(" and ") 
+			else
+				p "Try another color!"
+				break
+			end
+		end
 	end
 	#Returns to other colors equally spaced from it on color wheel
 	def triadic(color1)
@@ -97,8 +133,14 @@ class ColorGenius
 			"Orange" => ["Green","Purple"],
 			"Yellow-Orange" => ["Blue-Green","Red-Purple"]
 		}
-		tri.each {|key,value| p value.join(" and ") if key.downcase == color1.downcase}
-		tri.each {|key,value| tri[key].delete(color1.split("-").map {|x| x.capitalize}.join("-")) and p "#{key} and #{value.join}" if color1.downcase != key.downcase}
+		#This is the only one I'm having issues with
+		tri.each do |key,value| value.join(" and ") 
+			if key.downcase == color1.downcase
+				p value.join(" and ") 
+			elsif color1.downcase != key.downcase 
+				tri[key].delete(color1.split("-").map {|x| x.capitalize}.join("-")) and p "#{key} and #{value.join}"
+			end
+		end
 	end
 	#"Double Complementary", so returns complementary match and another complementary pair (input is 'primary' color of the 4)
 	def tetradic(color1)
@@ -116,11 +158,19 @@ class ColorGenius
 			"Purple" => ["Orange","Yellow","Blue"],
 			"Red-Purple" => ["Yellow-Orange","Yellow-Green","Blue-Purple"]
 		}
-		tetra.each {|key,value| p value.join(" and ") if key.downcase == color1.downcase}
+		tetra.each do |key,value|
+			if key.downcase == color1.downcase
+				p value.join(" and ") 
+			else
+				p "Try another color!"
+				break
+			end
+		end
 	end
 end
 
 color = ColorGenius.new
+color.comp("burgundy")
 
 
 
