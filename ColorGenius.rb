@@ -47,7 +47,7 @@ class ColorGenius
 			elsif value.downcase == color1.downcase
 				p key
 			else
-				p "Try another color!"
+				p "Try another color! Make sure your tertiary colors have hyphens."
 				break
 			end
 		end
@@ -72,7 +72,7 @@ class ColorGenius
 			if key.downcase == color1.downcase
 				p value.join(" and ") 
 			else
-				p "Try another color!"
+				p "Try another color! Make sure your tertiary colors have hyphens."
 				break
 			end
 		end
@@ -97,7 +97,7 @@ class ColorGenius
 			if key.downcase == color1.downcase
 				p value.join(" and ") 
 			else
-				p "Try another color!"
+				p "Try another color! Make sure your tertiary colors have hyphens."
 				break
 			end
 		end
@@ -120,7 +120,7 @@ class ColorGenius
 			if key.downcase == color1.downcase
 				p value.join(" and ") 
 			else
-				p "Try another color!"
+				p "Try another color! Make sure your tertiary colors have hyphens."
 				break
 			end
 		end
@@ -133,7 +133,7 @@ class ColorGenius
 			"Orange" => ["Green","Purple"],
 			"Yellow-Orange" => ["Blue-Green","Red-Purple"]
 		}
-		#This is the only one I'm having issues with
+		#This is the only one I'm having issues
 		tri.each do |key,value| value.join(" and ") 
 			if key.downcase == color1.downcase
 				p value.join(" and ") 
@@ -162,7 +162,7 @@ class ColorGenius
 			if key.downcase == color1.downcase
 				p value.join(" and ") 
 			else
-				p "Try another color!"
+				p "Try another color! Make sure your tertiary colors have hyphens."
 				break
 			end
 		end
