@@ -47,7 +47,7 @@ class ColorGenius
 			elsif value.downcase == color1.downcase
 				p key
 			else
-				p "Try another color! Make sure your tertiary colors have hyphens."
+				p "Try another color! Make sure to include a hyphen with tertiary colors."
 				break
 			end
 		end
@@ -72,7 +72,7 @@ class ColorGenius
 			if key.downcase == color1.downcase
 				p value.join(" and ") 
 			else
-				p "Try another color! Make sure your tertiary colors have hyphens."
+				p "Try another color! Make sure to include a hyphen with tertiary colors."
 				break
 			end
 		end
@@ -97,7 +97,7 @@ class ColorGenius
 			if key.downcase == color1.downcase
 				p value.join(" and ") 
 			else
-				p "Try another color! Make sure your tertiary colors have hyphens."
+				p "Try another color! Make sure to include a hyphen with tertiary colors."
 				break
 			end
 		end
@@ -120,7 +120,7 @@ class ColorGenius
 			if key.downcase == color1.downcase
 				p value.join(" and ") 
 			else
-				p "Try another color! Make sure your tertiary colors have hyphens."
+				p "Try another color! Make sure to include a hyphen with tertiary colors."
 				break
 			end
 		end
@@ -131,14 +131,14 @@ class ColorGenius
 			"Red" => ["Yellow","Blue"],
 			"Red-Orange" => ["Blue-Purple","Yellow-Green"],
 			"Orange" => ["Green","Purple"],
-			"Yellow-Orange" => ["Blue-Green","Red-Purple"]
+			"Yellow-Orange" => ["Blue-Green","Red-Purple"],
 		}
 		#This is the only one I'm having issues
 		tri.each do |key,value| value.join(" and ") 
 			if key.downcase == color1.downcase
-				p value.join(" and ") 
+				p value.join(" and ") 			
 			elsif color1.downcase != key.downcase 
-				tri[key].delete(color1.split("-").map {|x| x.capitalize}.join("-")) and p "#{key} and #{value.join}"
+				tri[key].delete(color1.split("-").map {|x| x.capitalize}.join("-")) and p "#{key} and #{value.join}"			
 			end
 		end
 	end
@@ -162,7 +162,7 @@ class ColorGenius
 			if key.downcase == color1.downcase
 				p value.join(" and ") 
 			else
-				p "Try another color! Make sure your tertiary colors have hyphens."
+				p "Try another color! Make sure to include a hyphen with tertiary colors."
 				break
 			end
 		end
@@ -170,7 +170,7 @@ class ColorGenius
 end
 
 color = ColorGenius.new
-color.comp("burgundy")
+
 
 
 
