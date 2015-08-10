@@ -21,11 +21,13 @@ class ColorGenius
 			["Blue","Purple"] => "Blue-Purple"
 		}
 		#If the two arguments are equal to one of the keys in any order, then it should return the value pair
+		response = "Colors cannot mix. Try again."
 		mix.each do |key,value| 
 			if key.join(" and ").downcase == "#{color1.downcase} and #{color2.downcase}" || key.join(" and ").downcase == "#{color2.downcase} and #{color1.downcase}" 
-				p value
+			response = "Colors can mix! The new color is #{value}."
 			end
 		end
+		p response
 	end
 	#Returns a completary color of the primary colors
 	def comp(color1)
@@ -38,13 +40,15 @@ class ColorGenius
 			"Yellow-Green" => "Red-Purple"
 		}
 		#If the argument is equal to one of the keys, then it should return the value pair
+		response = "Try another color!"
 		complementary.each do |key,value| 
 			if key.downcase == color1.downcase
-				p value
+				response = "The complementary color for #{color1.capitalize} is #{value}."
 			elsif value.downcase == color1.downcase
-				p key
+				response = "The complementary color for #{color1.capitalize} is #{key}."
 			end
 		end
+		p response
 	end
 	#Returns split complementary colors for input
 	def split_comp(color1)
@@ -62,11 +66,13 @@ class ColorGenius
 			"Purple" => ["Yellow-Orange","Yellow-Green"],
 			"Red-Purple" => ["Green","Yellow"]
 		}
+		response = "Try another color!"
 		split.each do |key,value|  
 			if key.downcase == color1.downcase
-				p value.join(" and ") 
+				response = "The split complementary colors of #{color1.capitalize} are #{value.join(" and ")}"
 			end
 		end
+		p response
 	end
 	#Returns analogous colors to input
 	def analogous(color1)
@@ -84,11 +90,13 @@ class ColorGenius
 			"Purple" => ["Blue-Purple","Red-Purple"],
 			"Red-Purple" => ["Red","Purple"]
 		}
+		response = "Try another color!"
 		analogous.each do |key,value| 
 			if key.downcase == color1.downcase
-				p value.join(" and ") 
+				response = "The analogous colors of #{color1.capitalize} are #{value.join(" and ")}" 
 			end
 		end
+		p response
 	end
 	#Breaks down a secondary color into its primary colors
 	def breakdown(color1)
@@ -104,11 +112,13 @@ class ColorGenius
 			"Blue-Purple" => ["Blue","Purple"]
 		}
 		#If the argument is equal to one of the keys, then it should return the value pair
+		response = "Try another color!"
 		breakdown.each do |key,value|  
 			if key.downcase == color1.downcase
-				p value.join(" and ") 
+				response = "#{color1.capitalize} when broken down becomes #{value.join(" and ")}"
 			end
 		end
+		p response
 	end
 	#Returns to other colors equally spaced from it on color wheel
 	def triadic(color1)
@@ -118,14 +128,16 @@ class ColorGenius
 			"Orange" => ["Green","Purple"],
 			"Yellow-Orange" => ["Blue-Green","Red-Purple"],
 		}
-		#This is the only one I'm having issues
-		tri.each do |key,value| value.join(" and ") 
+		response = "Try another color!"
+		tri.each do |key,value| 
 			if key.downcase == color1.downcase
-				p value.join(" and ") 			
-			elsif color1.downcase != key.downcase 
-				tri[key].delete(color1.split("-").map {|x| x.capitalize}.join("-")) and p "#{key} and #{value.join}"			
+				response = "The triadic colors of #{color1.capitalize} are  #{value.join(" and ")}" 			
+			else
+				tri[key].delete(color1.split("-").map {|x| x.capitalize}.join("-")) 
+				response = "The triatic colors of #{color1.capitalize} are #{key} and #{value}"			
 			end
 		end
+		p response
 	end
 	#"Double Complementary", so returns complementary match and another complementary pair (input is 'primary' color of the 4)
 	def tetradic(color1)
@@ -143,16 +155,18 @@ class ColorGenius
 			"Purple" => ["Orange","Yellow","Blue"],
 			"Red-Purple" => ["Yellow-Orange","Yellow-Green","Blue-Purple"]
 		}
+		response = "Try another color!"
 		tetra.each do |key,value|
 			if key.downcase == color1.downcase
-				p value.join(" and ") 
+				response = "The tetradic colors of #{color1.capitalize} are #{value.join(" and ")}"
 			end
 		end
+		p response
 	end
 end
 
 color = ColorGenius.new
-color.split_comp("red")
+
 
 
 
