@@ -121,6 +121,7 @@ class ColorGenius
 		p response
 	end
 	#Returns to other colors equally spaced from it on color wheel
+	#Still having problems
 	def triadic(color1)
 		tri = {
 			"Red" => ["Yellow","Blue"],
@@ -128,16 +129,14 @@ class ColorGenius
 			"Orange" => ["Green","Purple"],
 			"Yellow-Orange" => ["Blue-Green","Red-Purple"],
 		}
-		response = "Try another color!"
 		tri.each do |key,value| 
 			if key.downcase == color1.downcase
-				response = "The triadic colors of #{color1.capitalize} are  #{value.join(" and ")}" 			
-			else
+				p "The triadic colors of #{color1.capitalize} are #{value.join(" and ")}" 			
+			elsif key.downcase != color1.downcase
 				tri[key].delete(color1.split("-").map {|x| x.capitalize}.join("-")) 
-				response = "The triatic colors of #{color1.capitalize} are #{key} and #{value}"			
+				p "The triatic colors of #{color1.capitalize} are #{key} and #{value.join}"			
 			end
 		end
-		p response
 	end
 	#"Double Complementary", so returns complementary match and another complementary pair (input is 'primary' color of the 4)
 	def tetradic(color1)
@@ -166,6 +165,7 @@ class ColorGenius
 end
 
 color = ColorGenius.new
+color.triadic("red")
 
 
 
